@@ -127,6 +127,15 @@ The scenario and question MUST form a single coherent unit. Follow this order:
     variety guidance above). Example: "radio failure procedures", "stall recovery
     sequence", "fuel reserve requirements for night VFR".
 
+    IMMEDIATELY ask: what operational environment does this concept require?
+      - Light gun signals → requires a TOWERED airport
+      - CTAF self-announce → requires a NON-TOWERED airport
+      - IFR clearance, holds, approaches → requires IFR conditions and an IFR-rated pilot
+      - Night currency, night visibility minimums → requires a night scenario
+      - Class B/C/D procedures → requires the scenario to be in that airspace
+    If the concept only applies in a specific environment, your scenario MUST
+    place the student in that environment — or choose a different concept.
+
   STEP 2 — Build a scenario that makes that exact question natural.
     The scenario must place the student in a situation where the question is the
     obvious and immediate concern. If the question is about radio failure, the
@@ -144,6 +153,12 @@ COHERENCE CHECKLIST — verify before outputting:
   [ ] Is the question impossible or awkward to answer without the scenario?
   [ ] Are there no contradictions between scenario and question?
   [ ] Would a student reasonably encounter this question in this exact situation?
+  [ ] Does the question ask ONLY about procedures that apply to the environment
+      stated in the scenario? (towered vs. non-towered, VFR vs. IFR, day vs. night)
+  [ ] If the scenario says non-towered airport — does the question avoid light
+      gun signals, ATC clearances, and any tower-specific procedure?
+  [ ] If the scenario says VFR / non-instrument-rated pilot — does the question
+      avoid IFR procedures, ATC routing, and instrument requirements?
 
 If any check fails, rewrite before outputting.
 
