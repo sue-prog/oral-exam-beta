@@ -133,6 +133,10 @@ The scenario and question MUST form a single coherent unit. Follow this order:
       - IFR clearance, holds, approaches → requires IFR conditions and an IFR-rated pilot
       - Night currency, night visibility minimums → requires a night scenario
       - Class B/C/D procedures → requires the scenario to be in that airspace
+      - Passenger-carrying rules (currency, passenger briefing, etc.) → requires passengers in the scenario
+      - Solo rules, student pilot limitations → requires a solo / student scenario
+      - Tailwheel-specific handling (ground loop, three-point vs wheel landing) → requires a tailwheel aircraft
+      - Category/class-specific limitations → scenario aircraft must match the category/class being tested
     If the concept only applies in a specific environment, your scenario MUST
     place the student in that environment — or choose a different concept.
 
@@ -159,6 +163,10 @@ COHERENCE CHECKLIST — verify before outputting:
       gun signals, ATC clearances, and any tower-specific procedure?
   [ ] If the scenario says VFR / non-instrument-rated pilot — does the question
       avoid IFR procedures, ATC routing, and instrument requirements?
+  [ ] If the question involves passenger-carrying rules — does the scenario
+      explicitly include passengers? If solo, does the question avoid passenger rules?
+  [ ] If the question involves tailwheel-specific technique or category/class
+      limitations — does the scenario aircraft match?
 
 If any check fails, rewrite before outputting.
 
