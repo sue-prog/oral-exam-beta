@@ -62,8 +62,8 @@
       font-weight: 600; cursor: pointer;
     }
     .btn-sm:hover { background: var(--blue-light); }
-    .btn-danger { background: var(--red); }
-    .btn-danger:hover { background: #a93226; }
+    .btn-danger { background: var(--red); color: white; border-color: var(--red); }
+    .btn-danger:hover { background: #a93226; border-color: #a93226; }
 
     /* Stats table */
     .stats-table {
@@ -215,6 +215,7 @@
           <th>Sessions Started</th>
           <th>Questions Answered</th>
           <th>Challenges Filed</th>
+          <th>Unresolved Challenges</th>
         </tr>
       </thead>
       <tbody>
@@ -223,12 +224,14 @@
           <td><span class="big-num" id="stat-sessions">—</span></td>
           <td><span class="big-num" id="stat-questions">—</span></td>
           <td><span class="big-num" id="stat-challenges">—</span></td>
+          <td><span class="big-num" id="stat-unresolved">—</span></td>
         </tr>
         <tr>
           <td>Past 24 Hours</td>
           <td id="stat-sessions-24h">—</td>
           <td id="stat-questions-24h">—</td>
           <td id="stat-challenges-24h">—</td>
+          <td>—</td>
         </tr>
       </tbody>
     </table>
@@ -338,10 +341,16 @@ async function loadDashboard() {
 
   if (challengeRes.ok) {
     allChallenges = await challengeRes.json();
+    updateUnresolvedCount();
     populateAreaFilter();
     renderAreaBreakdown();
     renderChallenges();
   }
+}
+
+function updateUnresolvedCount() {
+  const el = document.getElementById("stat-unresolved");
+  if (el) el.textContent = allChallenges.length.toLocaleString();
 }
 
 function renderAreaBreakdown() {
@@ -376,6 +385,7 @@ async function deleteChallenge(key, btn) {
     if (res.ok) {
       document.getElementById(`card-${key}`)?.remove();
       allChallenges = allChallenges.filter(c => c.key !== key);
+      updateUnresolvedCount();
       renderAreaBreakdown();
     } else {
       btn.disabled = false;
