@@ -264,6 +264,7 @@ async function askNextQuestion() {
 
   updateProgressUI();
 
+  document.getElementById("scenario-card").classList.remove("hidden");
   document.getElementById("scenario").textContent = "Generating your question…";
   document.getElementById("question").textContent = "";
 
@@ -293,7 +294,14 @@ async function askNextQuestion() {
     }
   }
 
-  document.getElementById("scenario").textContent = llmData.scenario || "";
+  const scenarioText = llmData.scenario || "";
+  const scenarioCard = document.getElementById("scenario-card");
+  if (scenarioText) {
+    document.getElementById("scenario").textContent = scenarioText;
+    scenarioCard.classList.remove("hidden");
+  } else {
+    scenarioCard.classList.add("hidden");
+  }
   document.getElementById("question").textContent = llmData.question || "";
 }
 
@@ -639,7 +647,10 @@ function buildEvalPrompt(originalResponse, studentAnswer, area, task) {
       "Write this scope down mentally — it is the ONLY thing the student is being graded on. " +
 
       "STEP 2 — APPLY SCENARIO CONTEXT. " +
-      "The scenario in 'originalScenario' established the conditions the student was placed in. " +
+      "If 'originalScenario' is empty or blank, skip Steps 2 and 2B entirely — there is no scenario. " +
+      "Grade purely on whether the answer is factually correct and complete per FAA standards. " +
+      "Do not invent or assume any situational constraints. " +
+      "If 'originalScenario' is present, it established the conditions the student was placed in. " +
       "The student's answer must be correct for THOSE conditions — not for some other situation. " +
       "If the scenario places the student in cruise flight, do not penalize them for not discussing takeoff factors. " +
       "If the scenario specifies a particular aircraft type, altitude, weather, or phase of flight, " +
