@@ -207,9 +207,14 @@ function updateScoreTally() {
   );
   const el = document.getElementById("score-tally");
   if (!el) return;
+  const total = totals.correct + totals.partial + totals.incorrect;
   const parts = [`${totals.correct} correct`];
   if (totals.partial > 0) parts.push(`${totals.partial} partial`);
   parts.push(`${totals.incorrect} incorrect`);
+  if (total > 0) {
+    const pct = Math.round((totals.correct + totals.partial * 0.5) / total * 100);
+    parts.push(`${pct}% overall`);
+  }
   el.textContent = parts.join(" / ");
 }
 
