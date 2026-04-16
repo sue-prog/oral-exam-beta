@@ -104,12 +104,18 @@ export async function onRequestGet(context) {
 
   const valid = entries.filter(Boolean);
 
-  // Aggregate totals
+  // Aggregate totals and last-24h counts
   const totals = { session_start: 0, question_answered: 0, challenge_filed: 0 };
+  const last24h = { session_start: 0, question_answered: 0, challenge_filed: 0 };
   const byDate = {};
+  const cutoff = Date.now() - 24 * 60 * 60 * 1000;
 
   for (const entry of valid) {
     totals[entry.event] = (totals[entry.event] || 0) + 1;
+
+    if (new Date(entry.timestamp).getTime() >= cutoff) {
+      last24h[entry.event] = (last24h[entry.event] || 0) + 1;
+    }
 
     if (!byDate[entry.date]) {
       byDate[entry.date] = { session_start: 0, question_answered: 0, challenge_filed: 0 };
@@ -127,6 +133,11 @@ export async function onRequestGet(context) {
       sessions: totals.session_start,
       questionsAnswered: totals.question_answered,
       challengesFiled: totals.challenge_filed
+    },
+    last24h: {
+      sessions: last24h.session_start,
+      questionsAnswered: last24h.question_answered,
+      challengesFiled: last24h.challenge_filed
     },
     daily
   }), {

@@ -65,16 +65,37 @@
     .btn-danger { background: var(--red); }
     .btn-danger:hover { background: #a93226; }
 
-    /* Stats section */
-    .stats-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px;
+    /* Stats table */
+    .stats-table {
+      width: 100%; border-collapse: collapse; background: white;
+      border-radius: var(--radius); border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow); margin-bottom: 32px; overflow: hidden;
     }
-    .stat-card {
-      background: white; border-radius: var(--radius); border: 1px solid var(--gray-200);
-      padding: 20px 24px; box-shadow: var(--shadow); text-align: center;
+    .stats-table th {
+      background: var(--gray-100); text-align: center; padding: 10px 14px;
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--gray-400); border-bottom: 1px solid var(--gray-200);
     }
-    .stat-number { font-size: 2.8rem; font-weight: 800; color: var(--blue); line-height: 1; }
-    .stat-label { font-size: 0.85rem; color: var(--gray-400); margin-top: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+    .stats-table th:first-child { text-align: left; }
+    .stats-table td { padding: 12px 14px; font-size: 0.95rem; color: var(--gray-700); border-bottom: 1px solid var(--gray-200); text-align: center; }
+    .stats-table td:first-child { font-weight: 600; text-align: left; }
+    .stats-table tr:last-child td { border-bottom: none; }
+    .stats-table .big-num { font-size: 1.5rem; font-weight: 800; color: var(--blue); }
+
+    /* Area breakdown */
+    .area-breakdown {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px;
+    }
+    .area-chip {
+      background: white; border: 1px solid var(--gray-200); border-radius: var(--radius);
+      padding: 8px 14px; font-size: 0.88rem; box-shadow: var(--shadow);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .area-chip-label { color: var(--gray-700); font-weight: 600; }
+    .area-chip-count {
+      background: var(--blue-light); color: var(--blue);
+      font-weight: 800; font-size: 0.82rem; padding: 1px 7px; border-radius: 10px;
+    }
 
     /* Daily chart */
     .section-title {
@@ -187,20 +208,30 @@
 
     <!-- Usage Stats -->
     <div class="section-title">Usage Stats</div>
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-number" id="stat-sessions">—</div>
-        <div class="stat-label">Sessions Started</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number" id="stat-questions">—</div>
-        <div class="stat-label">Questions Answered</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number" id="stat-challenges">—</div>
-        <div class="stat-label">Challenges Filed</div>
-      </div>
-    </div>
+    <table class="stats-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Sessions Started</th>
+          <th>Questions Answered</th>
+          <th>Challenges Filed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>All Time</td>
+          <td><span class="big-num" id="stat-sessions">—</span></td>
+          <td><span class="big-num" id="stat-questions">—</span></td>
+          <td><span class="big-num" id="stat-challenges">—</span></td>
+        </tr>
+        <tr>
+          <td>Past 24 Hours</td>
+          <td id="stat-sessions-24h">—</td>
+          <td id="stat-questions-24h">—</td>
+          <td id="stat-challenges-24h">—</td>
+        </tr>
+      </tbody>
+    </table>
 
     <!-- Daily breakdown -->
     <div class="section-header">
@@ -219,6 +250,12 @@
         <tr><td colspan="4" class="empty-state">Loading…</td></tr>
       </tbody>
     </table>
+
+    <!-- Challenges by Area -->
+    <div class="section-title">Challenges by Area</div>
+    <div class="area-breakdown" id="area-breakdown">
+      <div class="empty-state" style="padding:12px">Loading…</div>
+    </div>
 
     <!-- Challenges -->
     <div class="section-header">
@@ -279,13 +316,15 @@ async function loadDashboard() {
     document.getElementById("stat-sessions").textContent = (stats.totals?.sessions ?? 0).toLocaleString();
     document.getElementById("stat-questions").textContent = (stats.totals?.questionsAnswered ?? 0).toLocaleString();
     document.getElementById("stat-challenges").textContent = (stats.totals?.challengesFiled ?? 0).toLocaleString();
+    document.getElementById("stat-sessions-24h").textContent = (stats.last24h?.sessions ?? 0).toLocaleString();
+    document.getElementById("stat-questions-24h").textContent = (stats.last24h?.questionsAnswered ?? 0).toLocaleString();
+    document.getElementById("stat-challenges-24h").textContent = (stats.last24h?.challengesFiled ?? 0).toLocaleString();
 
     const tbody = document.getElementById("daily-tbody");
     const daily = stats.daily || [];
     if (daily.length === 0) {
       tbody.innerHTML = '<tr><td colspan="4" class="empty-state">No data yet.</td></tr>';
     } else {
-      // Show most recent dates first
       tbody.innerHTML = [...daily].reverse().map(row => `
         <tr>
           <td>${row.date}</td>
@@ -300,7 +339,53 @@ async function loadDashboard() {
   if (challengeRes.ok) {
     allChallenges = await challengeRes.json();
     populateAreaFilter();
+    renderAreaBreakdown();
     renderChallenges();
+  }
+}
+
+function renderAreaBreakdown() {
+  const container = document.getElementById("area-breakdown");
+  const counts = {};
+  for (const c of allChallenges) {
+    if (!c.areaId) continue;
+    const label = `Area ${c.areaId}: ${c.areaTitle || c.areaId}`;
+    counts[label] = (counts[label] || 0) + 1;
+  }
+  const entries = Object.entries(counts).sort(([a], [b]) => a.localeCompare(b));
+  if (entries.length === 0) {
+    container.innerHTML = '<div style="color:var(--gray-400);font-size:0.9rem">No challenges yet.</div>';
+    return;
+  }
+  container.innerHTML = entries.map(([label, count]) => `
+    <div class="area-chip">
+      <span class="area-chip-label">${escHtml(label)}</span>
+      <span class="area-chip-count">${count}</span>
+    </div>
+  `).join("");
+}
+
+async function deleteChallenge(key, btn) {
+  if (!confirm("Mark this challenge as resolved and delete it?")) return;
+  btn.disabled = true;
+  btn.textContent = "Deleting…";
+  try {
+    const res = await fetch(`/api/challenge?token=${encodeURIComponent(adminToken)}&key=${encodeURIComponent(key)}`, {
+      method: "DELETE"
+    });
+    if (res.ok) {
+      document.getElementById(`card-${key}`)?.remove();
+      allChallenges = allChallenges.filter(c => c.key !== key);
+      renderAreaBreakdown();
+    } else {
+      btn.disabled = false;
+      btn.textContent = "Resolve & Delete";
+      alert("Delete failed — please try again.");
+    }
+  } catch {
+    btn.disabled = false;
+    btn.textContent = "Resolve & Delete";
+    alert("Delete failed — please try again.");
   }
 }
 
@@ -333,12 +418,13 @@ function renderChallenges() {
   }
 
   container.innerHTML = filtered.map((c, idx) => `
-    <div class="challenge-card">
+    <div class="challenge-card" id="card-${escHtml(c.key)}">
       <div class="challenge-meta">
         <span class="challenge-date">${formatDate(c.storedAt || c.timestamp)}</span>
         <span class="area-tag">Area ${c.areaId}: ${c.areaTitle || ""}</span>
         ${c.taskId ? `<span class="area-tag" style="background:#f0fdf4">${c.taskId}</span>` : ""}
         <span class="grade-badge grade-${c.aiGrade}">${c.aiGrade}</span>
+        <button class="btn-sm btn-danger" style="margin-left:auto" onclick="deleteChallenge('${escHtml(c.key)}', this)">Resolve &amp; Delete</button>
       </div>
 
       <div class="challenge-field">
