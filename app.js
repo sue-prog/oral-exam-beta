@@ -675,9 +675,20 @@ function buildEvalPrompt(originalResponse, studentAnswer, area, task) {
       "CRITICAL: if any part of the answer contains a specific factual error (wrong direction, wrong number, " +
       "wrong procedure step, wrong control input), grade 'partial' or 'incorrect' regardless of what else was correct. " +
 
+      "DISTINGUISHING MINOR FROM MEANINGFUL OMISSIONS: " +
+      "Before assigning 'partial', ask: would a real FAA examiner stop the student and say 'that's not good enough'? " +
+      "If the student demonstrated they know the procedure or concept, a missing supporting detail is minor — " +
+      "mention it in feedback but grade 'correct'. " +
+      "Only assign 'partial' when the omission is something the examiner would genuinely probe further — " +
+      "a required element that stands on its own, not just elaboration of something the student already said. " +
+      "Example: saying 'I'll sump the fuel' demonstrates knowledge of the sumping procedure. " +
+      "Not specifying what to look for (water, contamination, correct grade) is a minor omission — " +
+      "grade 'correct' and mention it briefly in feedback. " +
+      "Contrast: saying nothing about fuel at all during a preflight discussion is a meaningful omission. " +
+
       "Use exactly these grades: " +
-      "'correct' — answer is factually accurate and responsive to what was asked, even if not exhaustive; " +
-      "'partial' — got the core idea right but missed a meaningful required element, or contained a minor factual error; " +
+      "'correct' — answer addresses what was asked, including answers that are right in substance but omit minor supporting details; " +
+      "'partial' — got the core idea but missed a genuinely required element a real examiner would probe, or contained a minor factual error; " +
       "'incorrect' — clear factual error that would fail a checkride, or completely missed what was asked. " +
 
       "Respond with a JSON object: " +
