@@ -21,11 +21,10 @@ pages_build_output_dir = "."
 #                    Choose something strong — only you will use this.
 #                    e.g.: climb-admin-2025-<random>
 #
-# -----------------------------------------------------------------------
-# KV NAMESPACE BINDINGS — create in Cloudflare Pages dashboard
-# Settings → Functions → KV namespace bindings
-# -----------------------------------------------------------------------
-#
-# Variable name: BETA_CHALLENGES   → create a KV namespace called "BetaChallenges"
-# Variable name: BETA_STATS        → create a KV namespace called "BetaStats"
-#
+[[kv_namespaces]]
+binding = "BETA_CHALLENGES"
+id = "06c04f57cc1d421a8a614cd3f71a1de2"
+
+[[kv_namespaces]]
+binding = "BETA_STATS"
+id = "14787ee495aa4399b87f432605444f23"
