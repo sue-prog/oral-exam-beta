@@ -651,6 +651,16 @@ function buildEvalPrompt(originalResponse, studentAnswer, area, task) {
       "If there is a clear contradiction between scenario and question, note it briefly in feedback " +
       "but do not penalize the student — grade against the question as asked. " +
 
+      "STEP 2B — MATCH PROCEDURES TO THE SCENARIO ENVIRONMENT. " +
+      "The type of airport and airspace in the scenario determines which procedures are relevant. " +
+      "Tower-specific procedures (light gun signals, ATC clearances, Class D radio calls, ATIS) " +
+      "apply ONLY when the scenario places the student at a TOWERED airport. " +
+      "Non-towered procedures (CTAF self-announce, UNICOM) apply ONLY at non-towered airports. " +
+      "NEVER penalize a student for failing to mention a procedure that belongs to a different " +
+      "airport environment than the one described in the scenario. " +
+      "This principle extends to all environment-specific knowledge: IFR procedures do not apply " +
+      "to a VFR-only scenario; night requirements do not apply to a daytime scenario; etc. " +
+
       "STEP 3 — GRADE NARROWLY. " +
       "A complete answer is one that correctly addresses what the question asked within the scenario context. " +
       "Do NOT penalize for omitting information that was not asked for. " +
