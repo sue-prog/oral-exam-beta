@@ -686,21 +686,19 @@ function buildEvalPrompt(originalResponse, studentAnswer, area, task) {
       "does not also need to explain how they would continue the flight under those conditions. " +
       "Grade the decision the student actually made — not the decision you expected them to make. " +
 
-      "DISTINGUISHING MINOR FROM MEANINGFUL OMISSIONS: " +
-      "Before assigning 'partial', ask: would a real FAA examiner stop the student and say 'that's not good enough'? " +
-      "If the student demonstrated they know the procedure or concept, a missing supporting detail is minor — " +
-      "mention it in feedback but grade 'correct'. " +
-      "Only assign 'partial' when the omission is something the examiner would genuinely probe further — " +
-      "a required element that stands on its own, not just elaboration of something the student already said. " +
-      "Example: saying 'I'll sump the fuel' demonstrates knowledge of the sumping procedure. " +
-      "Not specifying what to look for (water, contamination, correct grade) is a minor omission — " +
-      "grade 'correct' and mention it briefly in feedback. " +
-      "Contrast: saying nothing about fuel at all during a preflight discussion is a meaningful omission. " +
-
-      "Use exactly these grades: " +
-      "'correct' — answer addresses what was asked, including answers that are right in substance but omit minor supporting details; " +
-      "'partial' — got the core idea but missed a genuinely required element a real examiner would probe, or contained a minor factual error; " +
-      "'incorrect' — clear factual error that would fail a checkride, or completely missed what was asked. " +
+      "GRADING THRESHOLDS — apply these in order: " +
+      "First check for factual errors. Any specific factual error (wrong number, wrong direction, wrong procedure step) " +
+      "makes the answer 'incorrect' regardless of how much else was right. " +
+      "If the answer is factually clean, then judge completeness: " +
+      "'correct' — answer covers roughly 80% or more of what was asked; minor omissions are fine and should be " +
+      "mentioned briefly in feedback but do not affect the grade. " +
+      "'partial' — answer is factually accurate but only covers about 60–80% of what was asked; " +
+      "meaningful elements are missing but the student clearly understands the core concept. " +
+      "'incorrect' — answer contains a factual error, OR covers less than roughly 60% of what was asked " +
+      "(missed the point entirely or gave a dangerously incomplete answer). " +
+      "When in doubt between 'correct' and 'partial', lean toward 'correct' — " +
+      "a student who gets the concept right and misses some detail is not failing a checkride. " +
+      "Only use 'partial' when you can clearly identify a meaningful gap, not just an absence of elaboration. " +
 
       "Respond with a JSON object: " +
       '{ "evaluation": { "grade": "correct|partial|incorrect", "feedback": "..." }, ' +
