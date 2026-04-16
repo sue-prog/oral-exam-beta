@@ -34,8 +34,8 @@ let currentEvalPrompt = "";  // saved for challenge submissions
 const RECENT_QUESTION_MEMORY = 5;
 let recentQuestionsByArea = {};
 
-const FULL_EXAM_BASE_QUESTIONS = 5;
-const FULL_EXAM_EXTENSION_QUESTIONS = 2;
+const FULL_EXAM_BASE_QUESTIONS = 3;
+const FULL_EXAM_EXTENSION_QUESTIONS = 0;
 
 function areaPassThreshold(total) {
   return total * 0.8;
