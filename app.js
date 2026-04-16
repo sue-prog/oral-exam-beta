@@ -288,7 +288,7 @@ async function askNextQuestion() {
     if (a) {
       if (!recentQuestionsByArea[a.id]) recentQuestionsByArea[a.id] = [];
       const recent = recentQuestionsByArea[a.id];
-      recent.push(llmData.question.slice(0, 120));
+      recent.push(llmData.question.slice(0, 300));
       if (recent.length > RECENT_QUESTION_MEMORY) recent.shift();
     }
   }
@@ -466,7 +466,7 @@ async function buildPrompt(area, task) {
 
   const recent = recentQuestionsByArea[area.id] || [];
   const recentContext = recent.length > 0
-    ? "Questions already asked this session (DO NOT repeat these concepts or close variations):\n" +
+    ? "The following questions were ALREADY asked in this session. You MUST NOT ask about the same topic again — not with different wording, not with a different scenario, not as a follow-up. Pick a completely different concept from this area:\n" +
       recent.map((q, i) => `  ${i + 1}. ${q}`).join("\n")
     : "";
 
