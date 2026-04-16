@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Climb AI Oral Exam Practice — Beta</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- LOADING screen -->
+  <div id="loading" class="screen hidden">
+    <div class="card center-card">
+      <p class="muted">Loading your exam session&hellip;</p>
+    </div>
+  </div>
+
+  <!-- WELCOME / BETA INSTRUCTIONS screen -->
+  <div id="welcome" class="screen">
+    <div class="welcome-container">
+
+      <div class="welcome-logo">
+        <img src="badge1.png" alt="Climb" />
+      </div>
+
+      <h1 class="welcome-title">AI Oral Exam Practice</h1>
+      <p class="welcome-subtitle">Private Pilot — All Areas of Operation</p>
+
+      <div class="beta-banner">
+        <div class="beta-badge">BETA</div>
+        <div class="beta-text">
+          <strong>You're helping train the AI.</strong><br>
+          This is a beta test. The AI grader is still learning — and your feedback
+          directly improves how accurately it grades future students.
+        </div>
+      </div>
+
+      <div class="welcome-instructions">
+        <h2>How it works</h2>
+        <ol>
+          <li>The AI plays the role of an FAA oral examiner and presents a scenario and question.</li>
+          <li>Type your answer as you would speak it in a real checkride oral exam.</li>
+          <li>The AI grades your answer: <span class="grade-pill correct-pill">Correct</span>, <span class="grade-pill partial-pill">Partial</span>, or <span class="grade-pill incorrect-pill">Incorrect</span> — with written feedback.</li>
+          <li>Work through all 11 Areas of Operation from the Private Pilot ACS.</li>
+        </ol>
+
+        <h2>If you disagree with a grade</h2>
+        <p>
+          Click the <strong>Challenge This Grade</strong> button. You'll be able to explain
+          why you think the grade is wrong. Every challenge is saved and reviewed to
+          improve future grading.
+        </p>
+
+        <div class="disclaimer">
+          <strong>Note:</strong> This tool is for practice only. It is not affiliated with
+          or endorsed by the FAA. Always verify answers with your instructor and the current
+          FAA publications.
+        </div>
+      </div>
+
+      <button id="start-btn" class="btn-primary btn-start">Start Practice Session &rarr;</button>
+
+    </div>
+  </div>
+
+  <!-- MAIN EXAM screen -->
+  <div id="exam" class="screen hidden">
+
+    <header>
+      <div class="header-inner">
+        <span class="header-logo">
+          <img src="badge1.png" alt="Climb" class="header-logo-img" />
+          Oral Exam Practice <span class="beta-chip">BETA</span>
+        </span>
+        <span id="score-tally" class="score-tally"></span>
+        <span id="progress-label" class="progress-label"></span>
+      </div>
+      <div class="progress-bar-track">
+        <div id="progress-bar" class="progress-bar-fill"></div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Area / Task label -->
+      <div id="area-label" class="area-label"></div>
+
+      <!-- Scenario box -->
+      <div class="card" id="scenario-card">
+        <div class="card-label">Scenario</div>
+        <p id="scenario"></p>
+      </div>
+
+      <!-- Question box -->
+      <div class="card" id="question-card">
+        <div class="card-label">Examiner Question</div>
+        <p id="question"></p>
+      </div>
+
+      <!-- Answer box -->
+      <div class="card" id="answer-card">
+        <div class="card-label">Your Answer</div>
+        <textarea
+          id="answer"
+          rows="5"
+          placeholder="Type your answer here, as you would speak it to an examiner…"
+        ></textarea>
+        <button id="submit" class="btn-primary">Submit Answer</button>
+      </div>
+
+      <!-- Feedback box (hidden until answer submitted) -->
+      <div class="card hidden" id="feedback-card">
+        <div class="card-label">
+          <span>Examiner Feedback</span>
+          <button id="challenge-btn" class="btn-challenge" title="Disagree with this grade? Challenge it to help improve the AI.">Challenge This Grade</button>
+        </div>
+        <p id="feedback"></p>
+        <button id="next" class="btn-secondary">Next Question &rarr;</button>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- CHALLENGE MODAL -->
+  <div id="challenge-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <h2>Challenge This Grade</h2>
+      <p>Thanks for helping improve the AI! Briefly explain why you think this grade is wrong (optional):</p>
+      <textarea id="challenge-reason" rows="4" placeholder="e.g. My answer correctly described the procedure — the AI missed that I mentioned the crosswind correction…"></textarea>
+      <div class="modal-actions">
+        <button id="challenge-cancel" class="btn-secondary">Cancel</button>
+        <button id="challenge-submit" class="btn-primary">Submit Challenge</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSION COMPLETE screen -->
+  <div id="complete" class="screen hidden">
+    <div class="card center-card">
+      <img src="badge1.png" alt="Climb" class="complete-logo" />
+      <h1>Session Complete</h1>
+      <p id="complete-message"></p>
+      <p class="muted" style="margin-top:8px">Thank you for helping improve Climb's AI grading!</p>
+      <button class="btn-primary" onclick="location.reload()">Start New Session</button>
+    </div>
+  </div>
+
+  <!-- SINGLE-AREA COMPLETE screen -->
+  <div id="single-area-complete" class="screen hidden">
+    <div class="card center-card">
+      <h1 id="single-area-title">Area Complete</h1>
+      <div id="single-area-score" class="big-score"></div>
+      <p id="single-area-message"></p>
+      <button id="single-area-more" class="btn-secondary">Give me more questions</button>
+      <button id="single-area-done" class="btn-primary">Continue</button>
+    </div>
+  </div>
+
+  <!-- ERROR screen -->
+  <div id="error-screen" class="screen hidden">
+    <div class="card center-card">
+      <h1>Something went wrong</h1>
+      <p id="error-message"></p>
+      <button class="btn-secondary" onclick="location.reload()">Try Again</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

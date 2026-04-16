@@ -1,0 +1,31 @@
+# Cloudflare Pages configuration — Beta build
+# Deploy this as a separate Cloudflare Pages project from the main oral-exam app.
+# Suggested project name: climb-oral-exam-beta
+
+name = "climb-oral-exam-beta"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = "."
+
+# -----------------------------------------------------------------------
+# ENVIRONMENT VARIABLES — set these in Cloudflare Pages dashboard
+# Settings → Environment variables → Production
+# -----------------------------------------------------------------------
+#
+# OPENAI_API_KEY     Your OpenAI secret key
+#
+# BETA_TOKEN         Lightweight guard token sent from the browser.
+#                    Must match BETA_API_TOKEN in app.js.
+#                    Suggested value: climb-beta-2025
+#
+# ADMIN_TOKEN        Secret token for admin.html access.
+#                    Choose something strong — only you will use this.
+#                    e.g.: climb-admin-2025-<random>
+#
+# -----------------------------------------------------------------------
+# KV NAMESPACE BINDINGS — create in Cloudflare Pages dashboard
+# Settings → Functions → KV namespace bindings
+# -----------------------------------------------------------------------
+#
+# Variable name: BETA_CHALLENGES   → create a KV namespace called "BetaChallenges"
+# Variable name: BETA_STATS        → create a KV namespace called "BetaStats"
+#

@@ -1,0 +1,280 @@
+{
+  "certificate": "Private Pilot",
+  "rating": "Airplane Single-Engine Land",
+
+  "acsUrl": "https://www.faa.gov/sites/faa.gov/files/2024-07/acs_private_airplane.pdf",
+
+  "references": {
+    "PHAK": "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak.pdf",
+    "AIM": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/",
+    "FARs": "https://www.ecfr.gov/current/title-14",
+    "AFH": "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/airplane_handbook"
+  },
+
+  "localPdfs": [],
+  "localText": [],
+
+  "areasOfOperation": [
+    {
+      "id": "I",
+      "title": "Preflight Preparation",
+      "groundingNotes": "ARROW documents must be on board: Airworthiness certificate, Registration, Radio station license (international only), Operating limitations (AFM/POH), Weight and balance. Pilot must carry: pilot certificate, medical certificate, government-issued photo ID (14 CFR 61.3).",
+      "tasks": [
+        {
+          "id": "A", "title": "Pilot Qualifications", "variants": { "asel": "required" },
+          "groundingNotes": "Private pilot privileges (14 CFR 61.113): may act as PIC of aircraft for personal use; may carry passengers; may not act as PIC for compensation or hire except narrow exceptions (14 CFR 61.113(b)-(h)). Medical: third-class required; valid 60 months if under 40, 24 months if 40 or older (BasicMed: 48 months, different requirements). Recent flight experience to carry passengers: 3 takeoffs and landings within 90 days in the same category/class; night passenger currency requires those 3 to be full-stop after sunset (14 CFR 61.57). Student solo endorsements: must be current (90-day or as specified by CFI). Logbook not required on person but endorsements must be accessible."
+        },
+        {
+          "id": "B", "title": "Airworthiness Requirements", "variants": { "asel": "required" },
+          "groundingNotes": "PIC responsible for determining aircraft airworthiness before flight (14 CFR 91.7). Airworthiness certificate must be displayed (14 CFR 91.203). Annual inspection required every 12 calendar months (14 CFR 91.409). 100-hour inspection required if aircraft operated for hire or flight instruction for hire. ADs (Airworthiness Directives) must be complied with — recurring ADs tracked in maintenance records. Inoperative equipment: use 14 CFR 91.213 — if no MEL, equipment may be inoperative if (1) not required by 14 CFR 91.205 or flight rules, (2) not part of a required inspection item, (3) placarded INOP, (4) maintenance performed per 14 CFR part 43 if needed. AVIATES checklist for required VFR day instruments: Altimeter, VSI, Tach, Airspeed, Temperature (oil), Engine instruments (oil pressure), Fuel gauges, Magnetic compass."
+        },
+        {
+          "id": "C", "title": "Weather Information", "variants": { "asel": "required" },
+          "groundingNotes": "VFR minimums in Class G below 1200 ft AGL day: 1 SM visibility, clear of clouds. Class G below 1200 ft AGL night: 3 SM, 500 below/1000 above/2000 horizontal. Class E: 3 SM, 500 below/1000 above/2000 horizontal. Class B: 3 SM, clear of clouds. Class C/D: 3 SM, 500 below/1000 above/2000 horizontal. Weather products: METARs (current), TAFs (forecast, 24-30 hrs), PIREPs (pilot reports), AIRMETs (G=turbulence/icing/mtn wave, S=IFR, T=thunderstorms for light aircraft), SIGMETs (severe/extreme conditions). Standard briefing from 1800wxbrief.com or Leidos. Wind shear on approach: sudden airspeed loss = windshear; recovery: full power, arrest descent rate. Fuel reserves: day VFR 30 minutes at normal cruise; night VFR 45 minutes (14 CFR 91.151)."
+        },
+        {
+          "id": "D", "title": "Cross-Country Flight Planning", "variants": { "asel": "required" },
+          "groundingNotes": "True course → True heading (apply wind correction angle) → Magnetic heading (apply variation, east is least, west is best) → Compass heading (apply deviation). VFR cruising altitudes above 3000 ft AGL: 0-179° magnetic = odd thousands + 500 ft; 180-359° = even thousands + 500 ft (14 CFR 91.159). Flight plan filed with FSS — not required for VFR but recommended. Cross-country requires landing at point more than 50 NM from departure. Sectional scale 1:500,000; terminal area chart 1:250,000. Time en route = distance ÷ groundspeed. Fuel burn = time × fuel flow. Always add reserve to planned fuel. Weight and balance: takeoff weight must not exceed max gross; CG must be within envelope at all weights including landing."
+        },
+        {
+          "id": "E", "title": "National Airspace System", "variants": { "asel": "required" },
+          "groundingNotes": "Class A: 18,000 ft MSL to FL600, IFR only, ATC clearance required. Class B: surface to 10,000 ft MSL around busiest airports, ATC clearance required, Mode C transponder required within 30 NM. Class C: surface to 4,000 ft AGL, two-way radio contact required, Mode C required. Class D: surface to 2,500 ft AGL, two-way radio contact required. Class E: controlled airspace not A/B/C/D, no clearance required for VFR. Class G: uncontrolled. Special use: Prohibited (no entry), Restricted (need permission), Warning, MOA, Alert, Controlled Firing. TFR: temporary, check NOTAMs. Transponder required: in Class A, B, C; above 10,000 ft MSL (except at or below 2,500 ft AGL); within 30 NM of Class B primary (Mode C veil)."
+        },
+        {
+          "id": "F", "title": "Performance and Limitations", "variants": { "asel": "required" },
+          "groundingNotes": "Density altitude = pressure altitude corrected for non-standard temperature. High density altitude reduces: engine power (less dense air = less fuel/air mixture), propeller efficiency, lift. Pressure altitude: set altimeter to 29.92, read altitude. PA = field elevation + (29.92 - local altimeter) × 1000. Performance charts use pressure altitude and temperature. Takeoff distance increases with: high density altitude, high gross weight, tailwind, uphill slope, soft/wet surface. Vx = best angle of climb (obstacle clearance); Vy = best rate of climb (altitude gain); both decrease with altitude. Va (maneuvering speed): do not make full or abrupt control inputs above Va; decreases with lower weight."
+        },
+        {
+          "id": "G", "title": "Operation of Systems", "variants": { "asel": "required" },
+          "groundingNotes": "Pitot-static system: altimeter (static), VSI (static), airspeed (pitot + static). Blocked pitot: airspeed reads zero or acts like altimeter. Blocked static: altimeter freezes, VSI freezes, airspeed reads incorrectly. Alternate static source provides slightly different readings (lower static pressure in cockpit). Carburetor ice: most likely 20-70°F OAT with high humidity, at low power settings; symptoms: RPM drop (fixed pitch), MP drop (constant speed); apply carb heat (RPM drops then rises as ice melts). Magnetos: each magneto fires one plug per cylinder; both magnetos on for normal ops; dead mag check: RPM drop of 125 RPM max, differential 50 RPM max. Fuel system: 100LL = blue, Jet-A = clear/straw; always sump tanks and strainer. Electrical: alternator charges battery; ammeter shows charge/discharge rate."
+        },
+        {
+          "id": "H", "title": "Human Factors", "variants": { "asel": "required" },
+          "groundingNotes": "IMSAFE checklist: Illness, Medication, Stress, Alcohol (8 hrs bottle-to-throttle; 0.04 BAC limit per 14 CFR 91.17; 24 hrs recommended), Fatigue, Emotion/Eating. Hypoxia: insufficient oxygen; most dangerous because insidious onset; four types: hypoxic (altitude), hypemic (CO poisoning/anemia), stagnant (heart failure), histotoxic (alcohol/drugs). Hyperventilation: too much CO2 expelled; symptoms similar to hypoxia; remedy: breathe into bag or consciously slow breathing. Spatial disorientation: vestibular system unreliable in IMC; trust instruments. Fatigue: most common human factor in accidents; no legal limit but PIC judgment required. ADM (Aeronautical Decision Making): DECIDE model — Detect, Estimate, Choose, Identify, Do, Evaluate. Hazardous attitudes: antiauthority, impulsivity, invulnerability, macho, resignation — each has an antidote."
+        }
+      ]
+    },
+    {
+      "id": "II",
+      "title": "Preflight Procedures",
+      "groundingNotes": "PIC responsible for determining aircraft airworthy before flight (14 CFR 91.7). Preflight follows POH checklist sequence.",
+      "tasks": [
+        {
+          "id": "A", "title": "Preflight Assessment", "variants": { "asel": "required" },
+          "groundingNotes": "Fuel: check quantity visually (do not rely on gauges alone for preflight), check color (100LL = blue), sump all tanks and quick-drain for water (water sinks to bottom, appears as clear bubbles). Oil: check level against POH minimums (typically 6-8 qt); check color and consistency. Control surfaces: move through full range, verify correct direction (aileron up on side stick is raised), check for security. Fuel vents: clear of obstructions. Static ports: clear. Pitot tube: clear, pitot cover removed. Tires: proper inflation, no excessive wear or cuts. Lights: all required lights functional. Fuel caps: secure after checking."
+        },
+        {
+          "id": "B", "title": "Flight Deck Management", "variants": { "asel": "required" },
+          "groundingNotes": "Seats and seat belts adjusted and locked before engine start. Required documents on board (ARROW). Charts and flight plan accessible. Sterile cockpit concept: minimize distractions during critical phases. Checklist discipline: use actual checklist, not memory alone for abnormal/emergency procedures. Personal electronic devices must not interfere with aircraft systems. Oxygen equipment (if equipped) checked. Loose items secured — become projectiles in turbulence."
+        },
+        {
+          "id": "C", "title": "Engine Starting", "variants": { "asel": "required" },
+          "groundingNotes": "Cold start vs. hot start procedures per POH. Prime as needed (carbureted engines). Clear prop before start — call 'Clear prop' and visually verify area clear. Start on correct fuel tank per POH. After start: check oil pressure within 30 seconds (or per POH); ammeter should show positive charge; suction gauge for gyros. Flooded engine: throttle full open, mixture cutoff, crank to clear fuel, then restart per POH. Hot start (fuel-injected): different procedure — consult POH (often involves opening throttle more)."
+        },
+        {
+          "id": "D", "title": "Taxiing", "variants": { "asel": "required" },
+          "groundingNotes": "Taxi speed: slow enough to stop within half the visible area. Brakes checked early on taxi. Flight controls: headwind = aileron into wind, elevator neutral; tailwind = aileron away from wind, elevator forward (dive away from tailwind). Taxiway markings: yellow centerline, hold short lines (two solid + two dashed = hold here; solid side faces runway). Never cross hold short line without ATC clearance at towered airport. Intersection departures: know runway distance remaining. Runway incursion avoidance: read back all runway crossing and hold short instructions; look before crossing."
+        },
+        {
+          "id": "E", "title": "Before Takeoff Check", "variants": { "asel": "required" },
+          "groundingNotes": "Run-up typically at 1800-2000 RPM (per POH). Mag check: max 125 RPM drop single mag, max 50 RPM differential. Carb heat check: RPM drop expected (confirms carb heat is working); return to COLD before takeoff (carb heat reduces power and can introduce unfiltered air). Suction/vacuum gauge: 4.6-5.4 in Hg typical for gyros. Flight controls free and correct direction. Trim set for takeoff. Transponder to ALT. Mixture set per field elevation. Abort criteria: any abnormal instrument reading, rough engine, control issues."
+        }
+      ]
+    },
+    {
+      "id": "III",
+      "title": "Airport and Seaplane Base Operations",
+      "groundingNotes": "Standard traffic pattern: left traffic, 1000 ft AGL for piston aircraft, unless otherwise published. CTAF used at non-towered airports.",
+      "tasks": [
+        {
+          "id": "A", "title": "Communications, Light Signals, and Runway Lighting Systems", "variants": { "asel": "required" },
+          "groundingNotes": "Light gun signals — in air: steady green = cleared to land; flashing green = return for landing; steady red = give way, continue circling; flashing red = airport unsafe, do not land; flashing white = return to starting point; alternating red/green = exercise extreme caution. On ground: steady green = cleared for takeoff; flashing green = cleared to taxi; steady red = stop; flashing red = taxi clear of runway; flashing white = return to starting point. ATIS/AWOS/ASOS: obtain before arrival/departure. Non-towered airport: announce position and intentions on CTAF; listen before transmitting. UNICOM: 122.8 MHz typical. Runway lighting: REIL (runway end identifier lights) = flashing white at threshold; VASI = red over red too low, white over white too high, red over white you're right; PAPI similar but 4 lights. Runway numbers = magnetic heading ÷ 10, rounded."
+        },
+        {
+          "id": "B", "title": "Traffic Patterns", "variants": { "asel": "required" },
+          "groundingNotes": "Standard pattern: left traffic; upwind (climb), crosswind (turn 90° to runway), downwind (parallel to runway, opposite direction), base (turn 90° toward runway), final (aligned with runway). Pattern altitude: 1000 ft AGL for piston (800 ft AGL at some airports — check Chart Supplement). Segmented circle: wind sock indicates wind direction; landing strip indicators show runway orientation; traffic pattern indicators show pattern direction. When entering: 45° to midfield downwind preferred. Power-off abeam: reduce power to approach setting. Wake turbulence: land beyond large aircraft's touchdown point; depart before large aircraft's rotation point."
+        }
+      ]
+    },
+    {
+      "id": "IV",
+      "title": "Takeoffs, Landings, and Go-Arounds",
+      "groundingNotes": "Rotate at Vr (per POH), climb at Vx for obstacles or Vy for altitude gain. Normal landing: approach at 1.3 Vso. Go-around: full power, carb heat off, positive climb, retract flaps incrementally.",
+      "tasks": [
+        {
+          "id": "A", "title": "Normal Takeoff and Climb", "variants": { "asel": "required" },
+          "groundingNotes": "Lineup: verify runway heading matches magnetic compass. Apply full power smoothly; check engine instruments in green. Directional control with rudder (not brakes). Rotate at Vr (per POH). After positive rate: retract flaps if extended. Climb at Vy initially; obstacle = Vx. Crosswind correction: crab or slip during climb. Abort criteria: airspeed not alive by ~30 kts, engine roughness, control anomaly."
+        },
+        {
+          "id": "B", "title": "Normal Approach and Landing", "variants": { "asel": "required" },
+          "groundingNotes": "Approach speed: 1.3 Vso (per POH). Stabilized approach: on speed, on glide path, on centerline by 200 ft AGL. Flaps: per POH for normal landing. Roundout: begin 10-20 ft AGL, reduce power, raise nose to landing attitude. Flare: hold off as long as possible, touch down at minimum airspeed. Touchdown: main gear first (tricycle gear). After landing: retract flaps, carb heat off, clear runway promptly. Crosswind: side-load on gear — use forward slip or crab-to-slip technique. Maximum demonstrated crosswind is not a limitation but a guideline."
+        },
+        {
+          "id": "C", "title": "Soft-Field Takeoff and Climb", "variants": { "asel": "required" },
+          "groundingNotes": "Purpose: minimize time and distance rolling through soft surface (mud, grass, snow). Technique: full back pressure on rollout to transfer weight off nosewheel; lift off at lowest possible airspeed; remain in ground effect (do not climb away); accelerate to Vx or Vy in ground effect before climbing. Do not retract gear while still in ground effect over soft surface. Never stop on soft field — keep moving."
+        },
+        {
+          "id": "D", "title": "Soft-Field Approach and Landing", "variants": { "asel": "required" },
+          "groundingNotes": "Purpose: land at minimum speed to avoid nosing over. Technique: normal approach; in flare, hold aircraft off as long as possible; touch down at minimum airspeed with full back pressure maintained; hold back pressure after touchdown to keep weight off nosewheel; use minimal braking. Do not stop on the surface if it can be avoided."
+        },
+        {
+          "id": "E", "title": "Short-Field Takeoff and Maximum Performance Climb", "variants": { "asel": "required" },
+          "groundingNotes": "Purpose: clear an obstacle in minimum distance. Technique: position at very beginning of runway; hold brakes; full power; release brakes; rotate at Vr (often same or slightly higher than normal); climb at Vx until obstacle cleared, then accelerate to Vy. Do not rush the rotation — premature rotation increases drag. Flaps: per POH (often 10°)."
+        },
+        {
+          "id": "F", "title": "Short-Field Approach and Landing", "variants": { "asel": "required" },
+          "groundingNotes": "Purpose: land in minimum distance. Technique: approach at 1.3 Vso (or POH short-field speed, often slightly lower than normal); aim for threshold; touch down at or just past threshold; immediately apply maximum braking; retract flaps to put weight on wheels (increases braking effectiveness). ACS standard: touchdown within 200 ft of specified point."
+        },
+        {
+          "id": "G", "title": "Forward Slip to a Landing", "variants": { "asel": "required" },
+          "groundingNotes": "Forward slip: bank into wind (or toward runway) with opposite rudder; aircraft sideslips — increases drag and descent rate without increasing airspeed. Use: lose excess altitude on final without increasing airspeed. NOT the same as a crosswind slip (which aligns ground track). Technique: bank one wing down, apply opposite rudder to prevent turn; maintain runway alignment; return to wings-level before touchdown. Airspeed indicator may be unreliable in a slip (pitot not aligned with airflow). Do not slip with full flaps on some aircraft (check POH — can cause tail blanking)."
+        },
+        {
+          "id": "H", "title": "Go-Around / Rejected Landing", "variants": { "asel": "required" },
+          "groundingNotes": "Decision: make early — any doubt = go around. Never hesitate once committed. Technique: full power immediately; carb heat OFF (reduces power); establish positive climb attitude; retract flaps incrementally to recommended go-around setting (not all at once — sudden lift loss); retract remaining flaps after positive climb established; clear obstacle/runway. Common error: reducing flaps too quickly causing aircraft to sink. Announce intentions on CTAF/tower. Go-around is always the right decision."
+        }
+      ]
+    },
+    {
+      "id": "V",
+      "title": "Performance and Ground Reference Maneuvers",
+      "groundingNotes": "Load factor at 45° bank = 1.41G. Ground reference maneuvers correct for wind drift by varying bank — steeper downwind, shallower upwind.",
+      "tasks": [
+        {
+          "id": "A", "title": "Steep Turns", "variants": { "asel": "required" },
+          "groundingNotes": "Bank angle: 45°. Standards: altitude ±100 ft, airspeed ±10 kt, heading ±10° on rollout. Technique: add back pressure AND slight power as bank increases (load factor increases stall speed). Left turn vs. right turn: torque/P-factor cause left-turning tendency — right turn requires more rudder. Overbanking tendency: in steep turn, outer wing moves faster and generates more lift — tendency to steepen bank; correct with slight opposite aileron. Common error: losing altitude (not adding enough back pressure)."
+        },
+        {
+          "id": "B", "title": "Ground Reference Maneuvers", "variants": { "asel": "required" },
+          "groundingNotes": "Turns around a point: maintain constant radius; steeper bank downwind (highest groundspeed), shallower upwind (lowest groundspeed). Entry: downwind, 45° abeam reference point. S-turns across a road: symmetrical half-circles; steepest bank immediately after crossing road going downwind; shallowest at top of circle going upwind. Rectangular course: simulates traffic pattern; correct for wind on each leg. All maneuvers: altitude 600-1000 ft AGL, entry speed at or below Va, two 90° clearing turns before maneuver."
+        }
+      ]
+    },
+    {
+      "id": "VI",
+      "title": "Navigation",
+      "groundingNotes": "True course → magnetic course (±variation) → magnetic heading (±deviation). If lost: climb, conserve, communicate, confess, comply.",
+      "tasks": [
+        {
+          "id": "A", "title": "Pilotage and Dead Reckoning", "variants": { "asel": "required" },
+          "groundingNotes": "Pilotage: match visual landmarks to sectional chart. Dead reckoning: use heading, airspeed, wind correction angle, and time. Wind correction angle (WCA): crab into wind to maintain course. Time en route = distance ÷ groundspeed. Estimated groundspeed: true airspeed ± wind component. Variation: East = subtract from true to get magnetic; West = add (East is least, West is best). Sectional chart scale: 1:500,000. METAR/TAF altimeter setting: use current local setting (QNH). Checkpoint passage: note time, compare to planned, update ETA."
+        },
+        {
+          "id": "B", "title": "Navigation Systems and Radar Services", "variants": { "asel": "required" },
+          "groundingNotes": "VOR: CDI centers when on selected radial; TO = flying toward station (or would intercept flying to); FROM = flying away. Full-scale deflection = 10°, 2° per dot (5-dot display). Reverse sensing: flying FROM with TO selected — turn away from needle. Radar services: flight following (VFR advisory service from ATC, workload permitting); transponder required (Mode C preferred). GPS: supplemental for VFR; RAIM required for IFR. ATC communication: squawk code assigned; ident when requested; altitude readout from Mode C."
+        },
+        {
+          "id": "C", "title": "Diversion", "variants": { "asel": "required" },
+          "groundingNotes": "When to divert: weather, fuel, emergency, aircraft problem. Decision: make early — don't wait until critical. Technique: identify alternate on chart; estimate heading (rough magnetic course); estimate time (distance ÷ estimated groundspeed); estimate fuel required; advise ATC if in contact. Mental math shortcuts: 60:1 rule — 1° off per 60 NM = 1 NM off course. Declare emergency if needed (no penalty for precautionary declaration). Contact FSS or approach for assistance."
+        },
+        {
+          "id": "D", "title": "Lost Procedures", "variants": { "asel": "required" },
+          "groundingNotes": "Climb: increases radio range, improves visibility for landmarks. Conserve fuel: reduce power. Communicate: contact ATC (121.5 emergency frequency, or last assigned frequency). Confess: tell ATC you are lost. Comply: follow ATC instructions. Transponder: squawk 7700 (emergency) if appropriate. Radar vectors: ATC can identify and vector if equipped with transponder. Do not press on into deteriorating weather while lost — land at nearest suitable airport."
+        }
+      ]
+    },
+    {
+      "id": "VII",
+      "title": "Slow Flight and Stalls",
+      "groundingNotes": "LEFT-TURNING TENDENCIES require RIGHT RUDDER — this applies to ALL tasks in this area. Four causes: torque, P-factor, spiraling slipstream, gyroscopic precession. All cause left yaw; all corrected with right rudder.",
+      "tasks": [
+        {
+          "id": "A", "title": "Maneuvering During Slow Flight", "variants": { "asel": "required" },
+          "groundingNotes": "Slow flight: at minimum controllable airspeed (just above stall, with stall warning active per ACS). Power: high power required to maintain altitude at low airspeed (in region of reversed command — more drag requires more power, not less). Controls: sloppy, mushy response; increased right rudder required to counteract torque/P-factor at high power low airspeed. Stall warning: should be on throughout slow flight exercise. If stall warning stops: too slow (on back side of power curve). Configuration: flaps as specified; gear as specified. ACS standard: ±10 kt airspeed, ±10° heading, ±100 ft altitude."
+        },
+        {
+          "id": "B", "title": "Power-Off Stalls", "variants": { "asel": "required" },
+          "groundingNotes": "Simulate approach-to-landing stall (configuration: gear down if applicable, landing flaps). Setup: reduce power to idle, maintain altitude (increasing back pressure as speed decreases). At stall: buffet, break, possible roll/yaw. Recovery: simultaneously — reduce back pressure (reduce AOA), add full power, apply right rudder for coordination; retract flaps incrementally; maintain coordinated flight. Do NOT roll wings level before reducing AOA. Secondary stall: occurs if back pressure reapplied before airspeed builds — avoid. ACS: recover with minimum altitude loss."
+        },
+        {
+          "id": "C", "title": "Power-On Stalls", "variants": { "asel": "required" },
+          "groundingNotes": "Simulate takeoff/departure stall (configuration: flaps as for takeoff or clean). Setup: from level flight, reduce airspeed to rotation speed, apply takeoff power, pitch up aggressively. Left roll/yaw tendency at stall is more pronounced than power-off — right rudder CRITICAL. At stall: break or buffet. Recovery: reduce back pressure first (even slight), then hold power (or add if not already at max), right rudder, coordinate. Do NOT pull back harder or add left aileron at stall — both worsen situation. ACS: recover with minimum altitude loss."
+        },
+        {
+          "id": "D", "title": "Spin Awareness", "variants": { "asel": "required" },
+          "groundingNotes": "Spin entry requires BOTH stall AND yaw (uncoordinated flight). Inside (pro-spin) skid more dangerous than outside slip. PARE recovery: Power off, Ailerons neutral, Rudder full opposite to rotation (this is primary recovery control in a spin — ailerons are ineffective or adverse), Elevator forward to break stall. Incipient spin: first 1-2 turns, rotation not yet stabilized — most recoverable. Developed spin: stabilized rotation, requires full PARE. Spin vs. spiral dive: spiral — increasing airspeed, high G, wings appear level from inside; spin — low/stable airspeed, low G, clear rotation. Recovery from spiral dive: reduce power first, level wings, THEN pull — opposite sequence from spin."
+        }
+      ]
+    },
+    {
+      "id": "VIII",
+      "title": "Basic Instrument Maneuvers",
+      "groundingNotes": "Attitude indicator is the primary control instrument. Altimeter, VSI, airspeed are performance instruments. Scan centered on AI.",
+      "tasks": [
+        {
+          "id": "A", "title": "Straight-and-Level Flight", "variants": { "asel": "required" },
+          "groundingNotes": "Instrument cross-check: attitude indicator (pitch and bank), altimeter (pitch result), VSI (pitch trend), airspeed (pitch/power), heading indicator (bank result). Lag instruments: altimeter and VSI lag behind actual altitude change — lead with AI. Trim: use trim to relieve control pressure, not to fly the aircraft. Common error: fixating on one instrument."
+        },
+        {
+          "id": "B", "title": "Constant Airspeed Climbs", "variants": { "asel": "required" },
+          "groundingNotes": "Establish climb: add power, raise pitch on AI, trim. Monitor: AI (pitch), airspeed (target climb speed), VSI (positive trend), heading (wings level). Level off: begin reducing pitch at ~10% of climb rate before target altitude (e.g., 500 fpm climb = start leveling 50 ft early). Accelerate to cruise, reduce power, trim."
+        },
+        {
+          "id": "C", "title": "Constant Airspeed Descents", "variants": { "asel": "required" },
+          "groundingNotes": "Establish descent: reduce power, lower pitch on AI, trim. Power-off descent: add carb heat before reducing power. Monitor: AI (pitch), airspeed (target descent speed), VSI (negative trend), heading. Level off: add power, raise pitch, trim. Common error: chasing the altimeter instead of flying the AI."
+        },
+        {
+          "id": "D", "title": "Turns to Headings", "variants": { "asel": "required" },
+          "groundingNotes": "Standard rate turn: 3°/second; bank angle ≈ (airspeed ÷ 10) + 7. Time for turns: 180° = 60 sec, 90° = 30 sec, 360° = 120 sec at standard rate. Lead the rollout: start rolling out ~5-10° before target heading (half the bank angle). Heading indicator: set to compass before flight; re-check every 15 minutes (precesses). Magnetic compass errors in turns: UNOS (Undershoot North, Overshoot South) in northern hemisphere."
+        },
+        {
+          "id": "E", "title": "Recovery from Unusual Flight Attitudes", "variants": { "asel": "required" },
+          "groundingNotes": "Nose-high unusual attitude: increase power, lower nose on AI, level wings — order matters (power first prevents stall). Nose-low unusual attitude: reduce power first (prevents overspeed), level wings, raise nose — NEVER pull back with wings banked (increases G and tightens spiral). ANDS acceleration error on compass: Accelerate North, Decelerate South (in northern hemisphere). UNOS turning error: Undershoot North, Overshoot South."
+        },
+        {
+          "id": "F", "title": "Radio Communications, Navigation Systems/Facilities, and Radar Services", "variants": { "asel": "required" },
+          "groundingNotes": "VOR under the hood: identify station (morse code), set OBS, interpret CDI. Intercepting a radial: determine position, calculate intercept heading (45° is standard). Tracking a radial: center needle, correct for wind drift. Holding: standard = right turns, 1-minute legs below 14,000 ft. Lost comms: squawk 7600; in VMC remain VMC and land as soon as practicable; in IMC — AVEF (Assigned, Vectored, Expected, Filed altitude; fly most direct route; begin approach at EFC or ETA)."
+        }
+      ]
+    },
+    {
+      "id": "IX",
+      "title": "Emergency Operations",
+      "groundingNotes": "Squawk 7700 emergency, 7600 lost comms, 7500 hijack. ELT: 406 MHz digital + 121.5 MHz analog.",
+      "tasks": [
+        {
+          "id": "A", "title": "Emergency Descent", "variants": { "asel": "required" },
+          "groundingNotes": "When used: onboard fire, rapid decompression (high altitude), smoke in cockpit. Technique: reduce power to idle; extend gear (if retractable — adds drag, limits speed); bank 30-45° (increases descent rate, maintains positive G); maintain Vne or Vmo minus margin (per POH); descend as rapidly as possible. Declare emergency: squawk 7700, contact ATC. Don oxygen if available. Do NOT dive vertically — structural limits."
+        },
+        {
+          "id": "B", "title": "Emergency Approach and Landing", "variants": { "asel": "required" },
+          "groundingNotes": "Engine failure: best glide speed (Vg) from POH immediately — do not delay. Memory items: airspeed to Vg, identify best field, checklist (fuel selector, mixture, ignition, carb heat, primer). Glide ratio: in most trainers approximately 8:1 (8 ft forward per 1 ft down). Field selection: length, surface, slope, obstacles, wind. Forced landing: ABCDE — Airspeed (Vg), Best field, Checklist, Declare/Distress, Execute. Mayday call: 'Mayday mayday mayday, [aircraft ID], [position], [altitude], [nature of emergency], [souls on board], [fuel remaining].' High key/low key pattern: high key = abeam field at 1000 ft AGL; low key = base at 500 ft AGL (general guidelines). Carb heat: apply early in power reduction — prevents carb ice from developing."
+        },
+        {
+          "id": "C", "title": "Systems and Equipment Malfunctions", "variants": { "asel": "required" },
+          "groundingNotes": "Electrical failure: master off (if non-essential) to conserve battery; use battery sparingly for radio/transponder; land as soon as practicable. Electrical fire: master off, vents open, extinguisher if available, land immediately. Engine fire on ground: mixture cutoff, fuel off, ignition off, evacuate. Engine fire in flight: fuel off, mixture cutoff, heat off, maintain glide, land ASAP. Pitot blockage (ice): airspeed reads zero or acts like altimeter (reads higher as altitude increases); activate pitot heat. Static blockage: altimeter freezes, VSI freezes, airspeed error; use alternate static (slight reading differences expected). Vacuum failure: AI and HI fail; use partial panel (turn coordinator + compass)."
+        },
+        {
+          "id": "D", "title": "Emergency Equipment and Survival Gear", "variants": { "asel": "required" },
+          "groundingNotes": "ELT: required for most aircraft (14 CFR 91.207); activates on impact (>5G); transmits on 406 MHz (registered with NOAA) and 121.5 MHz; battery must be replaced/recharged at 50% used or expiration date. Fire extinguisher: Halon or CO2 preferred (non-conductive); aim at base of fire. First aid kit: not required by regulation but recommended. Life preservers: required over water more than 50 NM from shore or beyond gliding distance. Survival gear for remote areas: required when operating over unpopulated areas per 14 CFR 91.509 (large/turbine); best practice for all operations over remote terrain."
+        },
+        {
+          "id": "E", "title": "Aeromedical Factors and Physiology", "variants": { "asel": "required" },
+          "groundingNotes": "Hypoxia: insufficient oxygen at cells; hypoxic type begins above 10,000 ft (night) or 12,500 ft (day); symptoms: euphoria, impaired judgment, cyanosis; treatment: supplemental O2, descend. Hyperventilation: blow off CO2; symptoms mimic hypoxia; treatment: slow breathing, breathe into bag, talk/sing. Spatial disorientation: vestibular system unreliable in IMC; leans, graveyard spiral illusion; prevention: trust instruments. Vision: cones (color, day, central), rods (night, peripheral); averted vision at night (look 10° off target); dark adaptation 30 minutes, destroyed instantly by bright light. Carbon monoxide: colorless, odorless; from heater exhaust; CO detector recommended; treatment: fresh air, 100% O2, land immediately. Alcohol: impairs judgment; 8-hour rule minimum; 0.04 BAC limit; avoid if hungover (residual effects)."
+        }
+      ]
+    },
+    {
+      "id": "X",
+      "title": "Night Operations",
+      "groundingNotes": "Dark adaptation: 30 minutes; destroyed by bright light. Averted vision: look 10° off target to use rods. Anti-collision lights required sunset to sunrise.",
+      "tasks": [
+        {
+          "id": "A", "title": "Night Preparation", "variants": { "asel": "required" },
+          "groundingNotes": "Currency: 3 full-stop landings within 90 days after sunset to carry passengers; must be full-stop (not touch-and-go) (14 CFR 61.57(b)). Night defined as: end of evening civil twilight to beginning of morning civil twilight (for logging); 1 hour after sunset to 1 hour before sunrise (for passenger currency). Required equipment for night VFR (14 CFR 91.205(c)): all day VFR instruments plus position lights, anti-collision light, landing light (for hire), spare fuses. Position lights: red = left wingtip, green = right wingtip, white = tail. Remember: aircraft coming toward you — red on left, green on right (like a ship). Illusions: autokinesis (stationary light appears to move — fixate on multiple references), black hole approach (no terrain/cultural lighting — leads to low approach), false horizon (sloped cloud layer or terrain). Preflight: flashlight, extra batteries; all lights tested; cockpit lighting adjusted to preserve night vision."
+        }
+      ]
+    },
+    {
+      "id": "XI",
+      "title": "Postflight Procedures",
+      "groundingNotes": "Secure aircraft per POH. Log discrepancies in maintenance logbook.",
+      "tasks": [
+        {
+          "id": "A", "title": "After Landing, Parking, and Securing", "variants": { "asel": "required" },
+          "groundingNotes": "After landing checklist: flaps up, carb heat off, transponder to standby or ALT, taxi clear of runway before stopping. Shutdown: mixture to idle cutoff (fuel-injected: cutoff first, then ignition off when engine stops from fuel starvation); magnetos off; master off; control lock installed. Securing: chocks placed; tie-downs on all three points; pitot cover installed; fuel to required level for next flight; oil checked; squawk any discrepancies in aircraft maintenance logbook (write-up is legal requirement for known defects). Hobbs vs. tach time: Hobbs runs with master on; tach runs proportional to RPM — used for maintenance intervals."
+        }
+      ]
+    }
+  ]
+}
