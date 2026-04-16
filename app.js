@@ -675,6 +675,17 @@ function buildEvalPrompt(originalResponse, studentAnswer, area, task) {
       "CRITICAL: if any part of the answer contains a specific factual error (wrong direction, wrong number, " +
       "wrong procedure step, wrong control input), grade 'partial' or 'incorrect' regardless of what else was correct. " +
 
+      "DECISION-BASED SCOPING: " +
+      "If the student's answer includes a clear decision that resolves the situation — " +
+      "such as 'I would not fly', 'I would not depart', 'I would land immediately', or 'I would divert' — " +
+      "do NOT penalize them for failing to address what would happen under the opposite decision. " +
+      "A student who correctly identifies an inoperative or out-of-limits item and states they will not fly " +
+      "has given a complete and correct answer. They are not required to also discuss troubleshooting, " +
+      "risk mitigation, or operational workarounds that only apply if they chose to fly anyway. " +
+      "The same logic applies in flight: a student who says 'I would divert' or 'I would declare an emergency' " +
+      "does not also need to explain how they would continue the flight under those conditions. " +
+      "Grade the decision the student actually made — not the decision you expected them to make. " +
+
       "DISTINGUISHING MINOR FROM MEANINGFUL OMISSIONS: " +
       "Before assigning 'partial', ask: would a real FAA examiner stop the student and say 'that's not good enough'? " +
       "If the student demonstrated they know the procedure or concept, a missing supporting detail is minor — " +
