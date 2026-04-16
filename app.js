@@ -639,6 +639,15 @@ function buildEvalPrompt(originalResponse, studentAnswer, area, task) {
       "If the scenario places the student in cruise flight, do not penalize them for not discussing takeoff factors. " +
       "If the scenario specifies a particular aircraft type, altitude, weather, or phase of flight, " +
       "treat those as fixed constraints and grade within them. " +
+      "CRITICAL — ONLY USE EXPLICITLY STATED DETAILS: " +
+      "Do NOT assume any operational detail that was not explicitly written in the scenario. " +
+      "This includes: time of day (day vs. night), weather conditions, pilot certificate level, " +
+      "flight rules (VFR vs. IFR), airspace class, passenger status, and phase of flight. " +
+      "If a detail is not stated in the scenario, treat it as unknown — do not assume it one way or the other. " +
+      "If the student's answer is correct under any reasonable reading of the unstated conditions, " +
+      "do not penalize them for it. " +
+      "If a key condition was absent from the scenario and the correct answer genuinely depends on it, " +
+      "note the ambiguity briefly in feedback but do not mark the answer incorrect solely because of that gap. " +
       "If there is a clear contradiction between scenario and question, note it briefly in feedback " +
       "but do not penalize the student — grade against the question as asked. " +
 

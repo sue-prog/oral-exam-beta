@@ -148,6 +148,39 @@ COHERENCE CHECKLIST — verify before outputting:
 If any check fails, rewrite before outputting.
 
 ========================
+SCENARIO COMPLETENESS — REQUIRED
+========================
+Every scenario MUST explicitly state ALL operational parameters that are relevant
+to the question being asked. Never leave these details implicit or assumed.
+
+Specify the following whenever they affect the correct answer:
+  - Pilot certificate: "You are a private pilot" / "You hold only a private pilot certificate"
+  - Flight rules: "You are flying VFR" / "You are not instrument rated" / "You are IFR current"
+  - Time of day: "It is daytime" / "It is night" / "It is after sunset"
+  - Weather: visibility, ceiling, VMC or IMC as applicable
+  - Phase of flight: preflight, taxi, takeoff, cruise, descent, approach, landing
+  - Airspace class (when relevant to the question)
+  - Passenger status: solo / carrying passengers
+  - Flight type: local / cross-country, and approximate distance if fuel or currency rules apply
+
+If the question only makes sense under specific conditions (e.g., night currency
+requirements, passenger-carrying rules, IFR minimums), those conditions MUST be
+present in the scenario — either as the situation the student is already in, or
+as a situation they are planning for.
+
+A scenario that omits these details forces the grader to assume them, which leads
+to unfair or inconsistent grading. When in doubt, be explicit.
+
+COMPLETENESS CHECKLIST — verify before outputting:
+  [ ] Would a student need to ask "am I VFR or IFR?" to answer correctly?
+  [ ] Would a student need to ask "is it day or night?" to answer correctly?
+  [ ] Would a student need to ask "do I have passengers?" to answer correctly?
+  [ ] Would a student need to ask "what airspace am I in?" to answer correctly?
+  [ ] Would a student need to ask "what certificate do I hold?" to answer correctly?
+
+If YES to any of these and it affects the correct answer, add that detail to the scenario.
+
+========================
 SCENARIO GENERATION RULES
 ========================
 - Scenario complexity must match the depth mode.
