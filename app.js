@@ -641,10 +641,17 @@ function buildEvalPrompt(originalResponse, studentAnswer, area, task) {
       "You are grading a student's answer to a specific oral exam question. " +
 
       "STEP 1 — IDENTIFY WHAT WAS ASKED. " +
-      "The exact question the student was asked is in the 'originalQuestion' field. " +
-      "Before doing anything else, extract the specific scope of that question: " +
-      "What single topic does it ask about? What would a complete answer need to address? " +
-      "Write this scope down mentally — it is the ONLY thing the student is being graded on. " +
+      "The exact question is in 'originalQuestion'. Read it literally and carefully. " +
+      "Derive the grading rubric ONLY from the specific words in that question — " +
+      "not from your general knowledge of the topic, not from related sub-topics, " +
+      "and not from what a thorough answer to a broader question might include. " +
+      "Example: if the question asks 'How do you check fuel quantity?', your rubric " +
+      "covers fuel quantity checks only. Fuel quality, fuel color, and fuel sampling " +
+      "are NOT part of the rubric even though you know they are part of a preflight — " +
+      "they were not asked. " +
+      "Before grading, write out this test: 'The question asks about [X]. " +
+      "A complete answer must address [X]. Nothing else is required.' " +
+      "Then hold to that scope strictly throughout grading. " +
 
       "STEP 2 — APPLY SCENARIO CONTEXT. " +
       "If 'originalScenario' is empty or blank, skip Steps 2 and 2B entirely — there is no scenario. " +
@@ -679,6 +686,11 @@ function buildEvalPrompt(originalResponse, studentAnswer, area, task) {
 
       "STEP 3 — GRADE NARROWLY. " +
       "A complete answer is one that correctly addresses what the question asked within the scenario context. " +
+      "Before deducting for any omission, apply this gate: " +
+      "Ask yourself — 'Is this missing element explicitly present in the question's wording?' " +
+      "If NO, you may NOT deduct for its absence. Do not deduct because you know it is " +
+      "related to the topic, because it is part of a broader procedure, or because a more " +
+      "thorough answer would have included it. The question defines the rubric. Period. " +
       "Do NOT penalize for omitting information that was not asked for. " +
       "Do NOT penalize for not addressing factors that the scenario did not raise. " +
       "Do NOT upgrade a grade because the student said other correct things unrelated to the question. " +

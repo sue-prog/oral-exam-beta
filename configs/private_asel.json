@@ -88,7 +88,7 @@
       "tasks": [
         {
           "id": "A", "title": "Communications, Light Signals, and Runway Lighting Systems", "variants": { "asel": "required" },
-          "groundingNotes": "Light gun signals apply ONLY to towered airports.  Light gun signals — in air: steady green = cleared to land; flashing green = return for landing; steady red = give way, continue circling; flashing red = airport unsafe, do not land; flashing white = return to starting point; alternating red/green = exercise extreme caution. On ground: steady green = cleared for takeoff; flashing green = cleared to taxi; steady red = stop; flashing red = taxi clear of runway; flashing white = return to starting point. ATIS/AWOS/ASOS: obtain before arrival/departure. Non-towered airport: announce position and intentions on CTAF; listen before transmitting. UNICOM: 122.8 MHz typical. Runway lighting: REIL (runway end identifier lights) = flashing white at threshold; VASI = red over red too low, white over white too high, red over white you're right; PAPI similar but 4 lights. Runway numbers = magnetic heading ÷ 10, rounded."
+          "groundingNotes": "Light gun signals apply ONLY to towered airports.  Light gun signals — in air: steady green = cleared to land; flashing green = return for landing; steady red = give way, continue circling; flashing red = airport unsafe, do not land; flashing white = return to starting point; alternating red/green = exercise extreme caution. On ground: steady green = cleared for takeoff; flashing green = cleared to taxi; steady red = stop; flashing red = taxi clear of runway; flashing white = return to starting point. ATIS/AWOS/ASOS: obtain before arrival/departure. Non-towered airport: announce position and intentions on CTAF; make a call on each leg of the pattern; listen before transmitting. UNICOM: 122.8 MHz typical. Runway lighting: REIL (runway end identifier lights) = flashing white at threshold; VASI = red over red too low, white over white too high, red over white you're right; PAPI similar but 4 lights. Runway numbers = magnetic heading ÷ 10, rounded."
         },
         {
           "id": "B", "title": "Traffic Patterns", "variants": { "asel": "required" },
@@ -142,7 +142,7 @@
       "tasks": [
         {
           "id": "A", "title": "Steep Turns", "variants": { "asel": "required" },
-          "groundingNotes": "Bank angle: 45°. Standards: altitude ±100 ft, airspeed ±10 kt, heading ±10° on rollout. Technique: add back pressure AND slight power as bank increases (load factor increases stall speed). Left turn vs. right turn: torque/P-factor cause left-turning tendency — right turn requires more rudder. Overbanking tendency: in steep turn, outer wing moves faster and generates more lift — tendency to steepen bank; correct with slight opposite aileron. Common error: losing altitude (not adding enough back pressure)."
+          "groundingNotes": "Bank angle: 45°. Standards: altitude ±100 ft, airspeed ±10 kt, heading ±10° on rollout. Technique: add back pressure AND slight power as bank increases to maintain both altitude and airspeed. Be aware that load factor increases stall speed. Left turn vs. right turn: torque/P-factor cause left-turning tendency — right turn requires more rudder. Overbanking tendency: in steep turn, outer wing moves faster and generates more lift — tendency to steepen bank; correct with slight opposite aileron. Common error: losing altitude (not adding enough back pressure)."
         },
         {
           "id": "B", "title": "Ground Reference Maneuvers", "variants": { "asel": "required" },
@@ -157,7 +157,7 @@
       "tasks": [
         {
           "id": "A", "title": "Pilotage and Dead Reckoning", "variants": { "asel": "required" },
-          "groundingNotes": "Pilotage: match visual landmarks to sectional chart. Dead reckoning: use heading, airspeed, wind correction angle, and time. Wind correction angle (WCA): crab into wind to maintain course. Time en route = distance ÷ groundspeed. Estimated groundspeed: true airspeed ± wind component. Variation: East = subtract from true to get magnetic; West = add (East is least, West is best). Sectional chart scale: 1:500,000. METAR/TAF altimeter setting: use current local setting (QNH). Checkpoint passage: note time, compare to planned, update ETA."
+          "groundingNotes": "Pilotage: match visual landmarks to sectional chart. Dead reckoning: use heading, airspeed, wind correction angle, and time. Wind correction angle (WCA): crab into wind to maintain course. Time en route = distance ÷ groundspeed. Estimated groundspeed: true airspeed ± wind component. Variation: East = subtract from true to get magnetic; West = add (East is least, West is best). Sectional chart scale: 1:500,000. METAR/TAF altimeter setting: use current local setting (QNH). Checkpoint passage: note time, compare to planned, update ETA. If correcting for wind other than forecast, correct to adjust the WCA plus more correction to get back on course."
         },
         {
           "id": "B", "title": "Navigation Systems and Radar Services", "variants": { "asel": "required" },

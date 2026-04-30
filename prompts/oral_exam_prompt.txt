@@ -105,6 +105,27 @@ Do NOT use a scenario for:
   - Definitions ("what is Vx?", "what is density altitude?")
   - Any question with a single correct answer regardless of situation
 
+FLIGHT MANEUVER TASKS — NO SCENARIO:
+For tasks that test how to perform a maneuver, do NOT use a scenario at all.
+These tasks are about technique and procedure, not about situational decisions.
+Set "scenario" to "" for all questions in these areas:
+  - Area V:   Performance and Ground Reference Maneuvers
+              (Steep Turns, Ground Reference Maneuvers)
+  - Area VII: Slow Flight and Stalls
+              (Slow Flight, Power-Off Stalls, Power-On Stalls, Spin Awareness)
+  - Area VIII: Basic Instrument Maneuvers
+              (all tasks)
+  - Area II:  Preflight Procedures (Engine Starting, Taxiing, Before Takeoff Check)
+              — these are procedural checklists, not situational decisions
+
+For tasks in these areas, ask directly:
+  "Walk me through how you perform a steep turn."
+  "What control inputs do you use to enter slow flight?"
+  "Describe the stall recovery sequence."
+No scenario is needed or helpful. A scenario here only adds irrelevant noise
+(mentioning airspace, weather, or passengers when the question is pure technique)
+and will confuse both the student and the grader.
+
 For questions that don't need a scenario, set "scenario" to an empty string "".
 Do NOT manufacture a scenario just to have one. A forced scenario on a knowledge
 question creates false constraints that confuse grading — the student will try to
@@ -135,14 +156,23 @@ Do not ask the same concept twice even if the scenario changes.
 Vary your questions across these types — track which you have already used and
 choose a type not yet covered (or least recently used):
 
-  1. Procedural    — "What would you do if…", "Walk me through the steps to…"
-  2. Regulatory    — "What does the FAR require…", "Are you legal to…", "What are the limits for…"
-  3. Aerodynamic   — "Why does the aircraft…", "What causes…", "Explain the aerodynamics of…"
-  4. Risk/judgment — "What risks are present here…", "How would you assess…", "What factors would change your decision…"
-  5. Systems       — "How does this system work…", "What would you check…", "What are the symptoms of…"
+  1. Procedural  — "What would you do if…", "Walk me through the steps to…"
+  2. Regulatory  — "What does the FAR require…", "Are you legal to…", "What are the limits for…"
+  3. Aerodynamic — "Why does the aircraft…", "What causes…", "Explain the aerodynamics of…"
+  4. Systems     — "How does this system work…", "What would you check…", "What are the symptoms of…"
+
+PROHIBITED QUESTION TYPE — DO NOT USE:
+Do NOT ask questions framed around "risk", "risk assessment", "risk management",
+"hazards", or "what risks are present". The FAA's definition of risk is precise and
+context-dependent (it varies by pilot experience, aircraft, environment, and regulatory
+framework), and AI-generated risk assessments routinely confuse risk with operational
+considerations. These questions cannot be graded reliably by an AI evaluator.
+If an ACS task includes a risk-management element, convert it into a procedural or
+regulatory question instead (e.g., "What does the FAR require?" or "Walk me through
+the go/no-go decision for…").
 
 If the recent questions listed above are all procedural (for example), your next
-question MUST be from a different type such as regulatory, aerodynamic, or risk/judgment.
+question MUST be from a different type such as regulatory, aerodynamic, or systems.
 
 ========================
 SCENARIO + QUESTION COHERENCE — CRITICAL
@@ -180,10 +210,15 @@ The scenario and question MUST form a single coherent unit. Follow this order:
     missing important context without the scenario.
 
 COHERENCE CHECKLIST — verify before outputting:
+  [ ] Is this a flight maneuver task (Area V, VII, VIII, or procedural tasks in II)?
+      If YES → scenario must be empty string "". Stop here.
   [ ] Does the scenario establish conditions that make the question relevant?
   [ ] Is the question impossible or awkward to answer without the scenario?
   [ ] Are there no contradictions between scenario and question?
   [ ] Would a student reasonably encounter this question in this exact situation?
+  [ ] Does every detail in the scenario directly affect the correct answer?
+      For each detail: if you removed it, would the question or answer change?
+      If NO → remove that detail.
   [ ] Does the question ask ONLY about procedures that apply to the environment
       stated in the scenario? (towered vs. non-towered, VFR vs. IFR, day vs. night)
   [ ] If the scenario says non-towered airport — does the question avoid light
@@ -239,6 +274,15 @@ SCENARIO GENERATION RULES
   specific to the concept being tested.
 - In deep mode, every complicating factor added to the scenario must be relevant to
   the question. Do not add complexity the question ignores.
+- NO ORPHAN DETAILS: Every detail you include in a scenario must be directly
+  relevant to the question you are about to ask. If a detail does not affect
+  the correct answer, do not include it. Examples of orphan details to omit:
+    - Airspace class when the question is about technique or aerodynamics
+    - Weather conditions when the question is about a procedural checklist
+    - Passenger status when the question is about aircraft systems
+    - Aircraft type/model when the question applies to any training aircraft
+  If you cannot draw a direct line from a scenario detail to the question,
+  cut the detail.
 
 ========================
 QUESTION GENERATION RULES
