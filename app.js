@@ -95,11 +95,14 @@ async function startSession(params) {
     localTextCache = await loadLocalText(config.localText);
     loadPerformance();
 
-    // Start area from URL param or beginning
+    // Start area from URL param, then sessionStorage (error recovery), then beginning
     const startAreaId = params.get("area") || null;
     if (startAreaId) {
       const idx = config.areasOfOperation.findIndex(a => a.id === startAreaId.toUpperCase());
       if (idx !== -1) currentAreaIndex = idx;
+    } else {
+      const saved = sessionStorage.getItem("currentAreaIndex");
+      if (saved !== null) currentAreaIndex = Math.max(0, parseInt(saved, 10) || 0);
     }
 
     // Skip areas with no applicable tasks
@@ -330,6 +333,7 @@ function moveToNextArea() {
   currentAreaInExtension = false;
   currentAreaIndex++;
   currentTaskIndex = 0;
+  sessionStorage.setItem("currentAreaIndex", currentAreaIndex);
   fullExamAreaQuestionCount = 0;
   recentQuestionsByArea[config.areasOfOperation[currentAreaIndex - 1]?.id] = [];
 
@@ -443,6 +447,7 @@ function showCompletion() {
       `Great work completing the session!`;
   }
 
+  sessionStorage.removeItem("currentAreaIndex");
   showScreen("complete");
 }
 
