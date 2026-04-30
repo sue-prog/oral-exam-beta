@@ -717,6 +717,17 @@ function buildEvalPrompt(originalResponse, studentAnswer, area, task) {
       "Do NOT penalize for omitting information that was not asked for. " +
       "Do NOT penalize for not addressing factors that the scenario did not raise. " +
       "Do NOT upgrade a grade because the student said other correct things unrelated to the question. " +
+
+      "GROUPED STEPS — DO NOT PENALIZE FOR FORMAT: " +
+      "When a question asks for a multi-step procedure, judge whether the student's answer " +
+      "demonstrates conceptual coverage of the required elements — not whether they listed " +
+      "each sub-step as a separate item. " +
+      "If a student groups two related steps into one statement and both concepts are present, " +
+      "that counts as covering both. Do NOT mark an element missing just because it was " +
+      "combined with another step rather than called out individually. " +
+      "Example: 'I check fuel quantity and color during preflight' covers both quantity and " +
+      "color even though they were not listed as two separate bullet points. " +
+      "Grade on conceptual completeness, not on the number of discrete items enumerated. " +
       "If groundingNotes are provided, treat them as authoritative FAA facts — use them to verify specific claims. " +
       "CRITICAL: if any part of the answer contains a specific factual error (wrong direction, wrong number, " +
       "wrong procedure step, wrong control input), grade 'partial' or 'incorrect' regardless of what else was correct. " +
