@@ -565,7 +565,13 @@ async function handleSubmit() {
   const area = config.areasOfOperation[currentAreaIndex];
   const task = currentAreaTasks[currentTaskIndex] ?? null;
 
-  const evalPrompt = buildEvalPrompt(currentLLMData, answer, area, task);
+  let gradingCorrections = [];
+  try {
+    const corrRes = await fetch(`/api/correction?area=${encodeURIComponent(area.id)}`);
+    if (corrRes.ok) gradingCorrections = await corrRes.json();
+  } catch { /* no corrections available — proceed normally */ }
+
+  const evalPrompt = buildEvalPrompt(currentLLMData, answer, area, task, gradingCorrections);
   currentEvalPrompt = evalPrompt;  // save for challenge submissions
 
   let evalData;
@@ -623,8 +629,25 @@ function handleNext() {
 // 11. EVAL PROMPT BUILDER
 // ===============================
 
-function buildEvalPrompt(originalResponse, studentAnswer, area, task) {
+function buildEvalPrompt(originalResponse, studentAnswer, area, task, corrections = []) {
   const groundingNotes = (task?.groundingNotes) || area.groundingNotes || "";
+
+  let correctionExamples = "";
+  if (corrections.length > 0) {
+    correctionExamples =
+      "GRADING EXAMPLES FROM HUMAN REVIEW — HIGHEST PRIORITY: " +
+      "The following cases were graded incorrectly by AI and corrected by a human expert. " +
+      "They represent the authoritative standard for this area. Match this grading style exactly. " +
+      corrections.map((c, i) =>
+        `Example ${i + 1}: ` +
+        `Question: "${c.question}" | ` +
+        `Student answer: "${c.studentAnswer}" | ` +
+        `AI grade was: ${c.aiGrade} | ` +
+        `Correct grade: ${c.correctGrade} | ` +
+        `Why: "${c.adminNote}"`
+      ).join(" ||| ");
+  }
+
   return JSON.stringify({
     role: "evaluator",
     certificate: config.certificate,
@@ -637,6 +660,7 @@ function buildEvalPrompt(originalResponse, studentAnswer, area, task) {
     originalQuestion: originalResponse.question,
     studentAnswer: studentAnswer,
     groundingNotes: groundingNotes,
+    correctionExamples: correctionExamples,
     instruction:
       "You are grading a student's answer to a specific oral exam question. " +
 

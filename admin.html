@@ -468,6 +468,30 @@ function renderChallenges() {
         <span class="toggle-prompt" onclick="togglePrompt(this)">Show eval prompt (for grounding improvement)</span>
         <pre class="eval-prompt-box" style="display:none">${escHtml(c.evalPrompt)}</pre>
       ` : ""}
+
+      <div class="correct-grade-section" style="margin-top:14px; border-top:1px solid var(--gray-200); padding-top:14px;">
+        <div class="section-title" style="font-size:0.72rem; margin-bottom:8px">Correct This Grade</div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:flex-start">
+          <select class="correct-grade-select" style="padding:6px 10px; border:1px solid var(--gray-200); border-radius:var(--radius); font-size:0.9rem; background:white;">
+            <option value="">— right grade —</option>
+            <option value="correct">correct</option>
+            <option value="partial">partial</option>
+            <option value="incorrect">incorrect</option>
+          </select>
+          <input type="text" class="correct-grade-note"
+            placeholder="Why? (e.g. student grouped steps correctly — counts as complete)"
+            style="flex:1; min-width:220px; padding:6px 10px; border:1px solid var(--gray-200); border-radius:var(--radius); font-size:0.9rem;" />
+          <button class="btn-sm"
+            onclick="submitCorrection(this,
+              '${escHtml(c.areaId)}', '${escHtml(c.taskId || "")}',
+              ${JSON.stringify(c.question || '')},
+              ${JSON.stringify(c.studentAnswer || '')},
+              '${escHtml(c.aiGrade)}')">
+            Save Correction
+          </button>
+        </div>
+        <div class="correct-grade-status" style="font-size:0.82rem; margin-top:6px; color:var(--green);"></div>
+      </div>
     </div>
   `).join("");
 }
@@ -501,6 +525,39 @@ function escHtml(str) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+}
+
+async function submitCorrection(btn, areaId, taskId, question, studentAnswer, aiGrade) {
+  const section = btn.closest(".correct-grade-section");
+  const correctGrade = section.querySelector(".correct-grade-select").value;
+  const adminNote = section.querySelector(".correct-grade-note").value.trim();
+  const statusEl = section.querySelector(".correct-grade-status");
+
+  if (!correctGrade) { statusEl.style.color = "var(--red)"; statusEl.textContent = "Select the correct grade first."; return; }
+  if (!adminNote) { statusEl.style.color = "var(--red)"; statusEl.textContent = "Add a brief note explaining why."; return; }
+
+  btn.disabled = true;
+  btn.textContent = "Saving…";
+
+  try {
+    const res = await fetch(`/api/correction?token=${encodeURIComponent(adminToken)}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ areaId, taskId, question, studentAnswer, aiGrade, correctGrade, adminNote })
+    });
+    if (res.ok) {
+      statusEl.style.color = "var(--green)";
+      statusEl.textContent = `Correction saved — future grading in Area ${areaId} will use this as an example.`;
+      btn.textContent = "Saved";
+    } else {
+      throw new Error("Server error");
+    }
+  } catch {
+    statusEl.style.color = "var(--red)";
+    statusEl.textContent = "Save failed — please try again.";
+    btn.disabled = false;
+    btn.textContent = "Save Correction";
+  }
 }
 
 // Allow pressing Enter in the token field to submit
