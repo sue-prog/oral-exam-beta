@@ -649,9 +649,32 @@ function buildEvalPrompt(originalResponse, studentAnswer, area, task) {
       "covers fuel quantity checks only. Fuel quality, fuel color, and fuel sampling " +
       "are NOT part of the rubric even though you know they are part of a preflight — " +
       "they were not asked. " +
-      "Before grading, write out this test: 'The question asks about [X]. " +
-      "A complete answer must address [X]. Nothing else is required.' " +
-      "Then hold to that scope strictly throughout grading. " +
+
+      "STEP 1B — IDENTIFY THE FORM OF ANSWER REQUESTED. " +
+      "Beyond the topic, the question's operative words define what KIND of answer is required. " +
+      "These are categorically different and must not be substituted for one another: " +
+      "  'What must you have in your possession / carry / bring' " +
+      "    → rubric covers only physical items the pilot holds or carries. " +
+      "    Currency requirements, things to verify, and things to ensure are NOT physical items " +
+      "    and must NOT be part of the rubric. " +
+      "  'What must you ensure / verify / confirm' " +
+      "    → rubric covers requirements the pilot must have met, not documents to carry. " +
+      "  'Walk me through the procedure / steps' " +
+      "    → rubric covers the sequence of actions, not definitions or regulations. " +
+      "  'What does the FAR require / what are the limits' " +
+      "    → rubric covers the regulatory standard only, not how to comply with it. " +
+      "  'Explain / describe / what is' " +
+      "    → rubric covers the concept or definition only. " +
+      "CRITICAL EXAMPLE of this failure mode: " +
+      "Question: 'What documentation must you have in your possession?' " +
+      "Wrong rubric: penalizing student for not mentioning currency requirements or things to ensure. " +
+      "Right rubric: physical documents only — certificate, medical, ID, endorsements if required. " +
+      "Currency (3 takeoffs/landings, medical validity period) is a requirement to MEET, " +
+      "not a document to CARRY — it is out of scope for a possession question. " +
+      "Before grading, complete this test: " +
+      "'The question asks [topic]. It asks for [form: possession / procedure / regulation / concept]. " +
+      "A complete answer must address [topic] in the form of [form]. Nothing else is required.' " +
+      "Then hold to that scope and form strictly throughout grading. " +
 
       "STEP 2 — APPLY SCENARIO CONTEXT. " +
       "If 'originalScenario' is empty or blank, skip Steps 2 and 2B entirely — there is no scenario. " +
