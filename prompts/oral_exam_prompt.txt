@@ -12,6 +12,11 @@ Aircraft (optional): {{aircraft}}
 If aircraft-specific data is not provided or no aircraft text is included, generate only generic questions that apply to any training aircraft.
 
 ========================
+AREA-SPECIFIC QUESTION GUIDANCE
+========================
+{{areaGuidance}}
+
+========================
 VARIANT / TASK EMPHASIS
 ========================
 {{variantContext}}

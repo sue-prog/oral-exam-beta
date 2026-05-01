@@ -100,6 +100,7 @@
       "id": "IV",
       "title": "Takeoffs, Landings, and Go-Arounds",
       "groundingNotes": "Rotate at Vr (per POH), climb at Vx for obstacles or Vy for altitude gain. Normal landing: approach at 1.3 Vso. Go-around: full power, carb heat off, positive climb, retract flaps incrementally.",
+      "questionGuidance": "De-emphasize Task A (Normal Takeoff and Climb) — it is the least instructionally interesting task in this area and students generally know it well. Weight questions toward Tasks C–H (soft-field, short-field, forward slip, go-around). Prefer comparative questions that highlight how special techniques differ from normal procedures, for example: 'How does a short-field takeoff differ from a normal takeoff?', 'When and why would you use a soft-field technique?', 'What makes a forward slip useful on approach?' If you do ask about normal procedures, connect them to a follow-up that contrasts with a special technique.",
       "tasks": [
         {
           "id": "A", "title": "Normal Takeoff and Climb", "variants": { "asel": "required" },

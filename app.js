@@ -49,6 +49,15 @@ let currentAreaInExtension = false;
 let activeVariant = "";
 let currentAreaTasks = [];
 
+function shuffleTasks(tasks) {
+  const arr = [...tasks];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 function buildAreaTaskList(area, variant, isExtensionRound) {
   if (!area.tasks || area.tasks.length === 0) return [];
   if (!variant) return area.tasks;
@@ -113,11 +122,11 @@ async function startSession(params) {
       currentAreaIndex++;
     }
 
-    currentAreaTasks = buildAreaTaskList(
+    currentAreaTasks = shuffleTasks(buildAreaTaskList(
       config.areasOfOperation[currentAreaIndex],
       activeVariant,
       false
-    );
+    ));
 
     showScreen("exam");
     updateProgressUI();
@@ -347,11 +356,11 @@ function moveToNextArea() {
   if (currentAreaIndex >= config.areasOfOperation.length) {
     startExtensionPhase();
   } else {
-    currentAreaTasks = buildAreaTaskList(
+    currentAreaTasks = shuffleTasks(buildAreaTaskList(
       config.areasOfOperation[currentAreaIndex],
       activeVariant,
       false
-    );
+    ));
     askNextQuestion();
   }
 }
@@ -398,11 +407,11 @@ function startAreaExtension(areaId) {
   currentAreaIndex = idx;
   currentTaskIndex = 0;
   fullExamAreaQuestionCount = 0;
-  currentAreaTasks = buildAreaTaskList(
+  currentAreaTasks = shuffleTasks(buildAreaTaskList(
     config.areasOfOperation[currentAreaIndex],
     activeVariant,
     true
-  );
+  ));
   currentAreaInExtension = true;
   showScreen("exam");
   askNextQuestion();
@@ -485,6 +494,7 @@ async function buildPrompt(area, task) {
 
   return template
     .replace("{{certificate}}", config.certificate)
+    .replace("{{areaGuidance}}", area.questionGuidance || "")
     .replace("{{areaTitle}}", area.title)
     .replace("{{areaId}}", area.id)
     .replace("{{taskId}}", task ? `${task.id}: ${task.title}` : "")
@@ -550,11 +560,11 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("challenge-submit").addEventListener("click", submitChallenge);
   document.getElementById("single-area-more").addEventListener("click", () => {
     currentTaskIndex = 0;
-    currentAreaTasks = buildAreaTaskList(
+    currentAreaTasks = shuffleTasks(buildAreaTaskList(
       config.areasOfOperation[currentAreaIndex],
       activeVariant,
       true
-    );
+    ));
     showScreen("exam");
     askNextQuestion();
   });
