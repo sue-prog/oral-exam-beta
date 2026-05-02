@@ -785,16 +785,20 @@ function buildEvalPrompt(originalResponse, studentAnswer, area, task, correction
       "GRADING THRESHOLDS — apply these in order: " +
       "First check for factual errors. Any specific factual error (wrong number, wrong direction, wrong procedure step) " +
       "makes the answer 'incorrect' regardless of how much else was right. " +
-      "If the answer is factually clean, then judge completeness: " +
-      "'correct' — answer covers roughly 80% or more of what was asked; minor omissions are fine and should be " +
-      "mentioned briefly in feedback but do not affect the grade. " +
-      "'partial' — answer is factually accurate but only covers about 60–80% of what was asked; " +
-      "meaningful elements are missing but the student clearly understands the core concept. " +
-      "'incorrect' — answer contains a factual error, OR covers less than roughly 60% of what was asked " +
-      "(missed the point entirely or gave a dangerously incomplete answer). " +
-      "When in doubt between 'correct' and 'partial', lean toward 'correct' — " +
-      "a student who gets the concept right and misses some detail is not failing a checkride. " +
-      "Only use 'partial' when you can clearly identify a meaningful gap, not just an absence of elaboration. " +
+      "If the answer is factually clean, apply these grades: " +
+      "'correct' — the student demonstrated they understand the concept and addressed what was asked. " +
+      "They do not need to mention every sub-point, cite every regulation, or elaborate beyond the question. " +
+      "If the concept was mentioned — even briefly — that counts. More detail is not required. " +
+      "'partial' — reserved for answers that are missing something BOTH truly important AND completely absent. " +
+      "To use 'partial' you must be able to answer YES to all three of these: " +
+      "(1) Is the missing element a distinct concept, not just elaboration on something already mentioned? " +
+      "(2) Would an FAA examiner on a real checkride actually fail the student for omitting this? " +
+      "(3) Is it entirely absent — not mentioned, implied, or covered in different words? " +
+      "If you cannot answer YES to all three, grade 'correct'. " +
+      "'incorrect' — contains a factual error, or the answer is so incomplete it shows no understanding of the concept. " +
+      "DEFAULT RULE: when in any doubt, grade 'correct'. " +
+      "A real FAA examiner passes students who demonstrate understanding — they do not fail students " +
+      "for failing to recite every detail. Err strongly on the side of correct. " +
 
       "Respond with a JSON object: " +
       '{ "evaluation": { "grade": "correct|partial|incorrect", "feedback": "..." }, ' +
